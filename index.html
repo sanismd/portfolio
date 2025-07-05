@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fahrullah Sani - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-light: #ecf0f1;
+            --bg-dark: #1a1a1a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary-color);
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-1);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .btn-custom {
+            background: var(--gradient-2);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            color: white;
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255,255,255,0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-2);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Experience Cards */
+        .experience-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--secondary-color);
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .experience-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary-color);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--secondary-color);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category {
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-item {
+            display: inline-block;
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .skill-item.hard-skill {
+            background: var(--gradient-2);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        /* Particles Background */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) translateX(0px);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">MFS</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Pengalaman</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#education">Pendidikan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Keahlian</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="hero-content" data-aos="fade-up">
+                        <h1 class="floating">Muhammad Fahrullah Sani</h1>
+                        <p data-aos="fade-up" data-aos-delay="200">Sarjana Sistem Informasi | Web Developer</p>
+                        
+                        <div class="contact-info" data-aos="fade-up" data-aos-delay="400">
+                            <a href="mailto:fahrulsanismr@gmail.com" class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                fahrulsanismr@gmail.com
+                            </a>
+                            <a href="tel:085175200105" class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                0851-7520-0105
+                            </a>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Samarinda, Kalimantan Timur
+                            </div>
+                        </div>
+                        
+                        <div data-aos="fade-up" data-aos-delay="600">
+                            <a href="#about" class="btn btn-custom me-3">
+                                <i class="fas fa-user me-2"></i>
+                                Tentang Saya
+                            </a>
+                            <a href="#skills" class="btn btn-custom">
+                                <i class="fas fa-code me-2"></i>
+                                Lihat Keahlian
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="floating" data-aos="fade-left" data-aos-delay="800">
+                        <i class="fas fa-laptop-code" style="font-size: 15rem; color: rgba(255,255,255,0.1);"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Tentang Saya</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="about-content" data-aos="fade-up" data-aos-delay="200">
+                        <p class="lead">
+                            Saya Muhammad Fahrullah Sani, lulusan S1 Sistem Informasi Universitas Mulawarman dengan ketertarikan dalam pengembangan perangkat lunak. Memiliki pengalaman sebagai asisten dosen dan magang, serta keahlian dalam pemrograman web.
+                        </p>
+                        <p>
+                            Saya antusias, cepat belajar, dan siap berkontribusi secara profesional dalam dunia teknologi informasi. Dengan passion yang kuat dalam web development, saya terus mengembangkan kemampuan untuk menciptakan solusi digital yang inovatif.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Pengalaman</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="experience-card">
+                        <h3><i class="fas fa-chalkboard-teacher me-2"></i>Asisten Dosen</h3>
+                        <div class="experience-date">Universitas Mulawarman | Jun 2020 - Jun 2023</div>
+                        <p>Membantu mengajar mahasiswa tingkat awal dalam program studi Sistem Informasi. Bertanggung jawab dalam membimbing praktikum dan memberikan konsultasi akademik.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="experience-card">
+                        <h3><i class="fas fa-code me-2"></i>Asisten Mentor Coding Mum</h3>
+                        <div class="experience-date">Jul 2023 - Aug 2023</div>
+                        <p>Membantu kegiatan pemberdayaan masyarakat melalui pelatihan pemrograman di wilayah Ibukota Nusantara. Mengajar konsep dasar programming dan web development.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Pendidikan</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+                        <div class="timeline-item">
+                            <h4><i class="fas fa-graduation-cap me-2"></i>Universitas Mulawarman</h4>
+                            <p class="mb-1"><strong>S1 Sistem Informasi</strong> | 2019 - 2024</p>
+                            <p class="mb-0">IPK: 3.79 | Fokus pada pengembangan sistem informasi dan web development</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h4><i class="fas fa-school me-2"></i>SMK TI Airlangga Samarinda</h4>
+                            <p class="mb-1"><strong>Rekayasa Perangkat Lunak</strong> | 2016 - 2019</p>
+                            <p class="mb-0">Mempelajari dasar-dasar pemrograman dan pengembangan aplikasi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Keahlian</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="skills-container" data-aos="fade-up" data-aos-delay="200">
+                        <div class="skill-category">
+                            <h4><i class="fas fa-heart me-2"></i>Soft Skills</h4>
+                            <div class="skills-list">
+                                <span class="skill-item">Jujur & Teliti</span>
+                                <span class="skill-item">Kerja Keras</span>
+                                <span class="skill-item">Komunikasi</span>
+                                <span class="skill-item">Adaptasi</span>
+                                <span class="skill-item">Kerja Tim</span>
+                                <span class="skill-item">Kerja Individual</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4><i class="fas fa-cogs me-2"></i>Hard Skills</h4>
+                            <div class="skills-list">
+                                <span class="skill-item hard-skill">HTML</span>
+                                <span class="skill-item hard-skill">CSS</span>
+                                <span class="skill-item hard-skill">JavaScript</span>
+                                <span class="skill-item hard-skill">PHP</span>
+                                <span class="skill-item hard-skill">Laravel</span>
+                                <span class="skill-item hard-skill">PostgreSQL</span>
+                                <span class="skill-item hard-skill">MVC</span>
+                                <span class="skill-item hard-skill">SDLC</span>
+                                <span class="skill-item hard-skill">REST API</span>
+                                <span class="skill-item hard-skill">GitHub</span>
+                                <span class="skill-item hard-skill">GitLab</span>
+                                <span class="skill-item hard-skill">Jenkins</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>&copy; 2025 Muhammad Fahrullah Sani. All rights reserved.</p>
+                    <p>Dibuat dengan <i class="fas fa-heart text-danger"></i> menggunakan Bootstrap & Modern Web Technologies</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar active state
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 8 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Initialize particles
+        createParticles();
+
+        // Typing effect for hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                typeWriter(heroTitle, 'Muhammad Fahrullah Sani', 100);
+            }
+        });
+
+        // Skill items hover effect
+        document.querySelectorAll('.skill-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
